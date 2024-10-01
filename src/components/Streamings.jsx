@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import logoPrime from "../../PRIME VIDEO PNG.png"
+import logoNetflix from "../../netflixlogo.png"
+import logoDisney from "../../logo-Disney-plus.jpeg"
 
 const Streamings = () => {
     const [streaming, setStreaming] = useState([]);
@@ -76,11 +79,11 @@ const Streamings = () => {
     const getImageForProvider = (providerName) => {
         switch (providerName) {
             case 'Netflix':
-                return 'C:/Users/User/Visual Code/AbsoluteCinema/src/components/img/netflixlogo.png';
+                return 'logoNetflix';
             case 'Disney Plus':
-                return 'C:/Users/User/Visual Code/AbsoluteCinema/src/components/img/logo-Disney-plus.jpeg';
+                return 'logoDisney';
             case 'Amazon Prime Video':
-                return 'C:/Users/User/Visual Code/AbsoluteCinema/src/components/img/PRIME VIDEO PNG.png';
+                return 'logoPrime';
             default:
                 return '/img/default.png';
         }
