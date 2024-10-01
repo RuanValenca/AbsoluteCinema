@@ -76,11 +76,11 @@ const Streamings = () => {
     const getImageForProvider = (providerName) => {
         switch (providerName) {
             case 'Netflix':
-                return '/public/netflixlogo.png';
+                return 'src/components/img/netflixlogo.png';
             case 'Disney Plus':
-                return 'public/logo-Disney-plus.jpeg';
+                return 'src/components/img/logo-Disney-plus.jpeg';
             case 'Amazon Prime Video':
-                return '/public/PRIME VIDEO PNG.png';
+                return 'src/components/img/PRIME VIDEO PNG.png';
             default:
                 return '/img/default.png';
         }
