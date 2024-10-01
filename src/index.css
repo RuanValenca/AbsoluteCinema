@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Jost';
+  src: url(components/fonts/Jost-VariableFont_wght.ttf);
+}
+
+html{
+  font-family: 'Jost';
+  background: #000;
+  scroll-behavior: smooth;
+  
+}
+
+body{
+  overflow-x: hidden;
+  margin: auto;
+}
