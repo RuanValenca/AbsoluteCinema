@@ -53,11 +53,13 @@ const Filmes = () => {
   const abrirMenu = () => {
     const menu = document.querySelector('.menu-lateral');
     menu.style.right = '0';
+    document.body.style.overflowY = "hidden";
   };
 
   const fecharMenu = () => {
     const menu = document.querySelector('.menu-lateral');
     menu.style.right = '-410px';
+    document.body.style.overflowY = "auto";
   };
 
   const handleClickCategoria = (id, event) => {
@@ -145,7 +147,7 @@ const Filmes = () => {
   return (
     <div id='Filmes'>
       <div className='categoria'>
-        <p onClick={abrirMenu} className='abrirMenu'>Categorias</p>
+        <p onClick={abrirMenu} className='abrirMenu'><a href="#Filmes">Categorias</a></p>
       </div>
 
       <section className='menu-lateral'>

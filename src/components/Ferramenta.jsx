@@ -60,7 +60,7 @@ const Ferramenta = () => {
     if (resultado) {
       setTimeout(() => {
         resultado.style.opacity = '1';
-      }, 2000);
+      }, 1500);
     }
   }
 
@@ -69,6 +69,7 @@ const Ferramenta = () => {
     if (escolha1) {
       escolha1.style.display = "flex";
       setModalState1("inicial");
+      document.body.style.overflowY = "hidden";
     }
   }
 
@@ -77,12 +78,14 @@ const Ferramenta = () => {
     if (escolha2) {
       escolha2.style.display = "flex";
       setModalState2("inicial");
+      document.body.style.overflowY = "hidden";
     }
   }
 
   function fecharModal() {
     const modais = document.querySelectorAll(".Modal");
     modais.forEach((modal) => (modal.style.display = "none"));
+    document.body.style.overflowY = "auto";
   }
 
   const handlePesquisa1 = (e) => {
@@ -171,7 +174,7 @@ const Ferramenta = () => {
           style={{
             backgroundImage: filme1 ? `url(${imageUrl}${filme1.backdrop_path})` : "none",
           }}
-        ></div>
+        ><a href="#Modal1"></a></div>
         <p id="sinalSoma">+</p>
         <div
           id="addFilme2"
@@ -180,7 +183,7 @@ const Ferramenta = () => {
           style={{
             backgroundImage: filme2 ? `url(${imageUrl}${filme2.backdrop_path})` : "none",
           }}
-        ></div>
+        ><a href="#Modal2"></a></div>
       </section>
 
       <div id="Modal1" className="Modal">

@@ -4,11 +4,13 @@
 }
 
 html{
+  margin: 0;
   font-family: 'Jost';
   background: #000;
   scroll-behavior: smooth;
 }
 
 body{
+  margin: 0;
   overflow-x: hidden;
 }

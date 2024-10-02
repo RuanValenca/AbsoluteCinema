@@ -419,6 +419,7 @@ a {
 }
 
 .addFilme {
+  overflow: hidden;
   user-select: none;
   cursor: pointer;
   border-radius: 12px;
@@ -429,6 +430,12 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.addFilme a{
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 #sinalSoma {
@@ -570,7 +577,7 @@ a {
   opacity: 0;
   margin: auto;
   width: 80%;
-  height: 70vh;
+  height: 80vh;
   border-radius: 12px;
   overflow: hidden;
   border: 5px solid rgb(31, 31, 31);
@@ -667,29 +674,286 @@ a {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 768px) {
   #Header h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   #pag2 {
-    height: 130vh;
+    height: 120vh;
   }
 
   #catalogo-title {
     font-size: 1.5rem;
     top: 1%;
-    left: 9%;
+    left: 10%;
+    margin-bottom: 5%;
   }
 
   .categoria {
-    bottom: 30px;
+    bottom: 75px;
     left: 30%;
     position: relative;
   }
 
   .categoria p {
     font-size: 1rem;
+  }  
+  .menu-lateral h2 {
+    right: 8%;
+    position: relative;
+    font-size: 2rem;
+  }
+
+  #searchBar {
+    left: 10%;
+    top: 8%;
+    width: 10%;
+    height: fit-content;
+    position: absolute;
+  }
+
+  .filmes-grid {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filme-poster {
+    height: 85%;
+    width: 85%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .overview {
+    font-size: .6rem;
+    height: 90%;
+    width: 100%;
+  }
+
+  #area-button {
+    bottom: 75vh;
+  }
+
+  #pag3 {
+    height: 310vh;
+  }
+
+  #streaming-title {
+    font-size: 1.5rem;
+  }
+
+  #streaming-subtitle {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .streaming-mainbox {
+    height: fit-content;
+  }
+
+  .streaming-section {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .logo-streaming {
+    display: block;
+    margin: 2% auto 10%;
+    width: 70px;
+    height: 70px;
+  }
+
+  .filmes-streamingBox {
+    margin: auto;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    height: 50vh;
+  }
+
+  .title {
+   font-size: 1rem;
+  }
+
+  .filme-item {
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    background-position: center;
+  }
+
+  #pag4 {
+    height: 200vh;
+  }
+
+  #ferramenta-title {
+    font-size: 1.5rem;
+  }
+
+  #descricao-pag4 {
+    font-size: .7rem;
+    margin: 2% 10% 10% 10%;
+  }
+
+  #container {
+    height: 45vh;
+    margin-bottom: 5%;
+  }
+
+  #sinalSoma {
+    font-size: 1.5rem;
+  }
+
+  .Modal {
+    left: calc(50% - 40%);
+    width: 80%;
+    height: 40%;
+  }
+
+  .Modal input {
+    left: calc(50% - 40px - 20%);
+    width: 50%;
+    border-radius: 12px;
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  .botoesModal {
+    top: 12%;
+    left: calc(50% - 15%);
+    position: absolute;
+    height: fit-content;
+    width: 30%;
+  }
+
+  .fecharModal {
+    font-size: 1rem;
+  }
+  
+  .excluirFilme {
+    border-radius: 6px;
+    padding: 5px;
+    font-size: .7rem;
+  }
+
+  .confirmaMovie {
+    padding: 5;
+    font-size: .7rem;
+    border-radius: 6px;
+  }
+
+  .infoModal {
+    margin: 20% auto;
+    width: 90%;
+    height: fit-content;
+  }
+
+  .infoModal h2 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .overviewModal {
+    font-size: .6rem;
+  }
+
+  .resultadosModal {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    margin: 15% auto 0 auto;
+    height: 80%;
+  }
+
+  .displayFilmes {
+    border: 1px solid rgb(31, 31, 31);
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 2%;
+    height: 80%;
+    width: fit-content;
+  }
+
+  .displayFilmes img {
+    width: 100%;
+  }
+
+  .FilmeSemelhanteBox {
+    margin: 10% auto;
+    width: 80%;
+    height: 60vh;
+  }
+
+  .infoResultado {
+    font-size: 1rem;
+  }
+
+  .infoResultado h2 {
+    font-size: 2rem;
+  }
+
+  #sideLeft {
+    margin: 2%;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+  }
+
+  #titleFooter{
+    font-size: 1rem;
+  }
+
+  #sideLeft p{
+    font-size: .7rem;
+  }
+
+  #itensFooter{
+    width: 20%;
+    font-size: 1.5rem;
+  }
+
+  #pag5 {
+    height: fit-content;
+  }
+
+  #credito {
+    font-size: .7rem;
+    left: calc(50% - 40%);
+    width: 80%;
+  }
+}
+
+@media (max-width:320px){
+  #Header h1 {
+    font-size: 1.5rem;
+  }
+
+  #Header a {
+    font-size: .8rem;
+  }
+
+  #pag2 {
+    height: 220vh;
+  }
+
+  #catalogo-title {
+    font-size: 1.5rem;
+    top: 1%;
+    left: 9%;
+    margin-bottom: 5%;
+  }
+
+  .categoria {
+    bottom: 45px;
+    left: 30%;
+    position: relative;
+  }
+
+  .categoria p {
+    font-size: .8rem;
   }
 
   .opcao-lista {
@@ -705,40 +969,44 @@ a {
   }
 
   .filmes-grid {
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 30%);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .filme-poster {
-    height: 85%;
-    width: 85%;
+    height: 75%;
+    width: 75%;
     background-size: cover;
     background-position: center;
   }
 
   .overview {
-    font-size: .7rem;
-    height: 90%;
+    font-size: .5rem;
+    height: 100%;
     width: 100%;
   }
 
+  .filme-poster h3{
+    display: none;
+  }
+
+  #area-button {
+    bottom: 15vh;
+  }
+
   #pag3 {
-    display: block;
-    position: relative;
-    z-index: 1;
-    width: auto;
-    height: 215vh;
-    color: white;
+    height: 240vh;
   }
 
   #streaming-title {
     margin: 0;
     text-align: center;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   #streaming-subtitle {
+    font-size: 1rem;
     text-align: center;
     width: 100%;
     margin: 0;
@@ -756,8 +1024,8 @@ a {
   .logo-streaming {
     display: block;
     margin: 2% auto 10%;
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
   }
 
   .filmes-streamingBox {
@@ -765,7 +1033,11 @@ a {
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    height: 35vh;
+    height: 40vh;
+  }
+
+  .title {
+   font-size: .7rem;
   }
 
   .filme-item {
@@ -776,59 +1048,68 @@ a {
   }
 
   #pag4 {
-    height: 100vh;
+    height: 200vh;
   }
 
   #ferramenta-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   #descricao-pag4 {
-    font-size: .9rem;
-    margin: 5% 10%;
+    font-size: .6rem;
+    margin: 2% 10% 10% 10%;
   }
 
   #container {
-    height: 20vh;
+    height: 25vh;
+    margin-bottom: 15%;
   }
 
   #sinalSoma {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .Modal {
-    width: 80%;
+    margin: auto;
+    width: 75%;
     height: 40%;
   }
 
   .botoesModal {
-    left: calc(50% - 25% - 20px);
+    top: 10%;
+    left: calc(50% - 15% - 20px);
     position: absolute;
     height: fit-content;
-    width: 50%;
+    width: 40%;
+  }
+
+  .fecharModal {
+    font-size: .7rem;
   }
 
   .Modal input {
+    width: 50%;
     border-radius: 6px;
-    font-size: 1rem;
-    padding: 2px;
+    font-size: .7rem;
+    padding: 0px;
   }
 
   .excluirFilme {
-    font-size: 1rem;
     border-radius: 6px;
-    font-size: .8rem;
+    padding: 2px;
+    font-size: .6rem;
   }
 
   .confirmaMovie {
-    font-size: .8rem;
+    padding: 0;
+    font-size: .6rem;
     border-radius: 6px;
   }
 
   .infoModal {
-    margin: 20% auto;
+    margin: 30% auto;
     width: 90%;
-    height: fit-content;
+    height: 60%;
   }
 
   .infoModal h2 {
@@ -837,7 +1118,7 @@ a {
   }
 
   .overviewModal {
-    font-size: .7rem;
+    font-size: .6rem;
   }
 
   .resultadosModal {
@@ -854,7 +1135,7 @@ a {
     border-radius: 12px;
     margin: 2%;
     height: 80%;
-    width: 80%;
+    width: fit-content;
   }
 
   .displayFilmes img {
@@ -862,8 +1143,9 @@ a {
   }
 
   .FilmeSemelhanteBox {
+    margin: 30% auto;
     width: 80%;
-    height: 30vh;
+    height: 60vh;
   }
 
   .infoResultado {
@@ -882,19 +1164,26 @@ a {
     height: fit-content;
   }
 
-  #img1,
-  #img2 {
-    margin-right: 0;
-    height: 8%;
-    width: 8%;
+  #titleFooter{
+    font-size: 1rem;
+  }
+
+  #sideLeft p{
+    font-size: .7rem;
+  }
+
+  #itensFooter{
+    width: 20%;
+    font-size: 1.5rem;
   }
 
   #pag5 {
-    height: 35vh;
+    height: fit-content;
   }
 
   #credito {
-    left: calc(50% - 30%);
-    width: 60%;
+    font-size: .7rem;
+    left: calc(50% - 40%);
+    width: 80%;
   }
 }
