@@ -15,9 +15,6 @@ export default function Footer() {
                     <a target="_blank" href="https://www.linkedin.com/in/ruanvalenca/">
                         <i id="img2" className="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:ruangobira@gmail.com">
-                        <i id="img3" className="fas fa-envelope"></i>
-                    </a>
                 </div>
             </div>
             <p id="credito">Dados fornecidos por <a target="_blank" href="https://www.themoviedb.org/">The Movie Database (TMDb)</a>.</p>
