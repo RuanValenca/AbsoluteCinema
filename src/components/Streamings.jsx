@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import logoPrime from "../../PRIME VIDEO PNG.png"
-import logoNetflix from "../../netflixlogo.png"
-import logoDisney from "../../logo-Disney-plus.jpeg"
 
 const Streamings = () => {
     const [streaming, setStreaming] = useState([]);
-    const [movies, setMovies] = useState({
-        netflix: [],
-        disney: [],
-        prime: []
-    });
+    const [movies, setMovies] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const apiKey = 'b92dace67b416e504288ed5d28ca0d58';
@@ -20,26 +13,36 @@ const Streamings = () => {
     useEffect(() => {
         const buscarStreamings = async () => {
             try {
+                // Buscar provedores de streaming
                 const response = await axios.get(`https://api.themoviedb.org/3/watch/providers/movie`, {
                     params: {
                         api_key: apiKey,
                         language: idioma,
+                        watch_region: region,
                     }
                 });
-                const provedores = response.data.results.filter(provider =>
+
+                // Filtrar provedores específicos (Netflix, Disney Plus, Amazon Prime Video)
+                const provedoresFiltrados = response.data.results.filter(provider =>
                     [8, 337, 119].includes(provider.provider_id)
                 );
-                setStreaming(provedores);
+                setStreaming(provedoresFiltrados);
 
-                const netflixMovies = await buscarFilmes(8);
-                const disneyMovies = await buscarFilmes(337);
-                const primeMovies = await buscarFilmes(119);
+                // Buscar filmes para cada provedor filtrado
+                const filmesPorProvedor = await Promise.all(
+                    provedoresFiltrados.map(async (provider) => {
+                        const filmes = await buscarFilmes(provider.provider_id);
+                        return { provider_id: provider.provider_id, filmes };
+                    })
+                );
 
-                setMovies({
-                    netflix: netflixMovies,
-                    disney: disneyMovies,
-                    prime: primeMovies
-                });
+                // Converter para um objeto com provider_id como chave
+                const filmesMap = filmesPorProvedor.reduce((acc, curr) => {
+                    acc[curr.provider_id] = curr.filmes;
+                    return acc;
+                }, {});
+
+                setMovies(filmesMap);
             } catch (err) {
                 setError(err);
             } finally {
@@ -55,7 +58,7 @@ const Streamings = () => {
                         language: idioma,
                         with_watch_providers: providerId,
                         watch_region: region,
-                        sort_by: 'popularity-desc',
+                        sort_by: 'popularity.desc',
                     }
                 });
                 return response.data.results.slice(0, 4);
@@ -76,19 +79,6 @@ const Streamings = () => {
         return <div>Erro ao carregar dados: {error.message}</div>;
     }
 
-    const getImageForProvider = (providerName) => {
-        switch (providerName) {
-            case 'Netflix':
-                return 'logoNetflix';
-            case 'Disney Plus':
-                return 'logoDisney';
-            case 'Amazon Prime Video':
-                return 'logoPrime';
-            default:
-                return '/img/default.png';
-        }
-    };
-
     const getProviderUrl = (providerName) => {
         switch (providerName) {
             case 'Netflix':
@@ -103,14 +93,14 @@ const Streamings = () => {
     };
 
     const handleClick = (event) => {
-        const streamingPosters = document.querySelectorAll(".filme-item");
-        streamingPosters.forEach(filme => {
+        const streamingItems = document.querySelectorAll(".filme-item");
+        streamingItems.forEach(filme => {
             filme.classList.remove('filmeSelecionado');
         });
         event.currentTarget.classList.add('filmeSelecionado');
 
-        const title = document.querySelectorAll(".title");
-        title.forEach(title => {
+        const titles = document.querySelectorAll(".title");
+        titles.forEach(title => {
             title.classList.remove('titleSelecionado');
         });
         event.currentTarget.querySelector('.title').classList.add('titleSelecionado');
@@ -120,37 +110,25 @@ const Streamings = () => {
         <div className="streaming-mainbox">
             {streaming.map(provider => (
                 <div key={provider.provider_id} className="streaming-section">
-                    <a href={getProviderUrl(provider.provider_name)} target="blank" rel="noopener noreferrer">
-                        <img
-                            className="logo-streaming"
-                            src={getImageForProvider(provider.provider_name)}
-                            alt={provider.provider_name} />
+                    <a href={getProviderUrl(provider.provider_name)} target="_blank" rel="noopener noreferrer">
+                        {provider.logo_path ? (
+                            <img
+                                className="logo-streaming"
+                                src={`https://image.tmdb.org/t/p/w200${provider.logo_path}`}
+                                alt={provider.provider_name}
+                            />
+                        ) : (
+                            <div className="logo-placeholder">{provider.provider_name}</div>
+                        )}
                     </a>
                     <div className="filmes-streamingBox">
-                        {provider.provider_id === 8 && movies.netflix.map(movie => (
+                        {movies[provider.provider_id] && movies[provider.provider_id].map(movie => (
                             <article
                                 key={movie.id}
                                 onClick={handleClick}
                                 className="filme-item"
-                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>
-                                <h3 className="title">{movie.title}</h3>
-                            </article>
-                        ))}
-                        {provider.provider_id === 337 && movies.disney.map(movie => (
-                            <article
-                                key={movie.id}
-                                onClick={handleClick}
-                                className="filme-item"
-                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>
-                                <h3 className="title">{movie.title}</h3>
-                            </article>
-                        ))}
-                        {provider.provider_id === 119 && movies.prime.map(movie => (
-                            <article
-                                key={movie.id}
-                                onClick={handleClick}
-                                className="filme-item"
-                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>
+                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}
+                            >
                                 <h3 className="title">{movie.title}</h3>
                             </article>
                         ))}

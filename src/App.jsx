@@ -5,6 +5,7 @@ import Streamings from './components/Streamings'
 import Ferramenta from './components/Ferramenta'
 import Footer from './components/Footer'
 
+
 export default function App() {
   return (
     <div className="App">

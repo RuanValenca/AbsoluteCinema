@@ -621,12 +621,25 @@ a {
   height: fit-content;
 }
 
-#img1,
-#img2 {
-  margin-right: 0;
-  height: 10%;
-  width: 10%;
+#itensFooter{
+  justify-content: space-evenly;
+  display: flex;
+  width: 30%;
+  font-size: 2rem;
 }
+
+#img1{
+  color: #333
+}
+#img2{
+  color: #0e76a8
+}
+
+#img3{
+  color: red;
+}
+
+
 
 #credito {
   left: calc(50% - 15%);
