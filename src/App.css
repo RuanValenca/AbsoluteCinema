@@ -903,16 +903,16 @@ a {
   }
 
   #titleFooter{
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
   #sideLeft p{
-    font-size: .7rem;
+    font-size: 1rem;
   }
 
   #itensFooter{
-    width: 20%;
-    font-size: 1.5rem;
+    width: 10%;
+    font-size: 2rem;
   }
 
   #pag5 {
@@ -920,9 +920,9 @@ a {
   }
 
   #credito {
-    font-size: .7rem;
-    left: calc(50% - 40%);
-    width: 80%;
+    font-size: 1rem;
+    left: calc(50% - 23%);
+    width: 46%;
   }
 }
 
