@@ -479,13 +479,14 @@ a {
 }
 
 .Modal input {
+  font-family: 'Jost';
   font-size: 1rem;
   left: calc(50% - 20% - 20px);
   top: 10px;
   position: absolute;
   width: 40%;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   border-radius: 12px;
   border: 1px solid black;
 }
@@ -502,18 +503,20 @@ a {
 }
 
 .excluirFilme {
+  font-family: 'Jost';
   cursor: pointer;
   font-size: 1rem;
-  padding: 5px;
+  padding: 3px;
   border-radius: 12px;
   color: white;
   background: #000;
 }
 
 .confirmaMovie {
+  font-family: 'Jost';
   cursor: pointer;
   font-size: 1rem;
-  padding: 5px;
+  padding: 3px;
   border-radius: 12px;
   color: white;
   background: #000;
