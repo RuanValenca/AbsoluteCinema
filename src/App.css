@@ -451,7 +451,6 @@ a {
   top: calc(50% - 40%);
   position: absolute;
   z-index: 1000;
-  padding: 5px;
   overflow: hidden;
   border: 5px solid rgb(31, 31, 31);
   border-radius: 25px;
@@ -467,6 +466,7 @@ a {
 }
 
 .fecharModal {
+  color: rgb(31, 31, 31);
   font-family: 'Jost';
   font-weight: bold;
   cursor: pointer;
@@ -520,6 +520,7 @@ a {
 }
 
 .infoModal {
+  background: #000000b2;
   text-overflow: ellipsis;
   overflow-y: hidden;
   text-align: justify;
@@ -537,21 +538,24 @@ a {
 }
 
 .infoModal h2 {
+  color: white;
   margin: 0;
   font-size: 1.5rem;
 }
 
 .overviewModal {
+  color: white;
+  font-weight: bold;
   align-items: center;
 }
 
 .resultadosModal {
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 40%);
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  margin: auto;
+  margin: 10% auto;
   overflow: hidden;
-  height: 80%;
+  height: 100%;
 }
 
 .displayFilmes {
@@ -559,8 +563,8 @@ a {
   cursor: pointer;
   overflow: hidden;
   border-radius: 12px;
-  margin: 2%;
-  height: 90%;
+  margin: auto;
+  height: 80%;
   width: fit-content;
 }
 
