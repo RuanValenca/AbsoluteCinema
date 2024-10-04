@@ -32,7 +32,7 @@ const Ferramenta = () => {
         .then((response) => {
           const filmes = response.data.results;
           if (filmes.length > 0) {
-            
+
             const filmeSemelhante = filmes[0];
             setFilmeSemelhante(filmeSemelhante);
 
@@ -69,23 +69,23 @@ const Ferramenta = () => {
     if (escolha1) {
       escolha1.style.display = "flex";
       setModalState1("inicial");
-      document.body.style.overflowY = "hidden";
+      document.documentElement.style.overflow = "hidden";
     }
   }
-
+  
   function abrirModal2() {
     const escolha2 = document.getElementById("Modal2");
     if (escolha2) {
       escolha2.style.display = "flex";
       setModalState2("inicial");
-      document.body.style.overflowY = "hidden";
+      document.documentElement.style.overflow = "hidden";
     }
   }
 
   function fecharModal() {
     const modais = document.querySelectorAll(".Modal");
     modais.forEach((modal) => (modal.style.display = "none"));
-    document.body.style.overflowY = "auto";
+    document.documentElement.style.overflow = "auto";
   }
 
   const handlePesquisa1 = (e) => {
@@ -186,46 +186,47 @@ const Ferramenta = () => {
         ><a href="#Modal2"></a></div>
       </section>
 
-      <div id="Modal1" className="Modal">
+      <div id="Modal1" className="Modal" style={{ backgroundImage: filmeSelecionado1 ? `url(${imagemFundo1})` : 'none' }}>
         <div className="leftSide">
           <button className="fecharModal" onClick={fecharModal}>
             X
           </button>
-          <input
-            type="text"
-            name="searchModal1"
-            id="searchModal1"
-            placeholder="Pesquisar Filme 1"
-            value={pesquisa1}
-            onChange={handlePesquisa1}
-          />
-          <div className="botoesModal">
-            <button className="excluirFilme" onClick={excluirFilme1}>
-              Excluir Filme
-            </button>
-            <button
-              className="confirmaMovie"
-              onClick={() =>
-                definirFundoEFechar(
-                  filmeSelecionado1
-                    ? `${imageUrl}${filmeSelecionado1.backdrop_path}`
-                    : "",
-                  setImagemFundo1,
-                  setModalState1
-                )
-              }
-            >
-              Enviar
-            </button>
-          </div>
-
-          {filmeSelecionado1 && (
+          {modalState1 === "selecionado" ? (
             <section className="infoModal" id="infoModal1">
               <h2>{filmeSelecionado1.title}</h2>
               <p className="overviewModal">{filmeSelecionado1.overview}</p>
             </section>
+          ) : (
+            <>
+              <input
+                type="text"
+                name="searchModal1"
+                id="searchModal1"
+                placeholder="Pesquisar Filme 1"
+                value={pesquisa1}
+                onChange={handlePesquisa1}
+              />
+              <div className="botoesModal">
+                <button className="excluirFilme" onClick={excluirFilme1}>
+                  Excluir Filme
+                </button>
+                <button
+                  className="confirmaMovie"
+                  onClick={() =>
+                    definirFundoEFechar(
+                      filmeSelecionado1
+                        ? `${imageUrl}${filmeSelecionado1.backdrop_path}`
+                        : "",
+                      setImagemFundo1,
+                      setModalState1
+                    )
+                  }
+                >
+                  Enviar
+                </button>
+              </div>
+            </>
           )}
-
           {!filmeSelecionado1 && resultados1.length > 0 && (
             <section className="resultadosModal">
               {resultados1.map((filme) => (
@@ -242,46 +243,47 @@ const Ferramenta = () => {
         </div>
       </div>
 
-      <div id="Modal2" className="Modal">
+      <div id="Modal2" className="Modal" style={{ backgroundImage: filmeSelecionado2 ? `url(${imagemFundo2})` : 'none' }}>
         <div className="leftSide">
           <button className="fecharModal" onClick={fecharModal}>
             X
           </button>
-          <input
-            type="text"
-            name="searchModal2"
-            id="searchModal2"
-            placeholder="Pesquisar Filme 2"
-            value={pesquisa2}
-            onChange={handlePesquisa2}
-          />
-          <div className="botoesModal">
-            <button className="excluirFilme" onClick={excluirFilme2}>
-              Excluir Filme
-            </button>
-            <button
-              className="confirmaMovie"
-              onClick={() =>
-                definirFundoEFechar(
-                  filmeSelecionado2
-                    ? `${imageUrl}${filmeSelecionado2.backdrop_path}`
-                    : "",
-                  setImagemFundo2,
-                  setModalState2
-                )
-              }
-            >
-              Enviar
-            </button>
-          </div>
-
-          {filmeSelecionado2 && (
+          {modalState2 === "selecionado" ? (
             <section className="infoModal" id="infoModal2">
               <h2>{filmeSelecionado2.title}</h2>
               <p className="overviewModal">{filmeSelecionado2.overview}</p>
             </section>
+          ) : (
+            <>
+              <input
+                type="text"
+                name="searchModal2"
+                id="searchModal2"
+                placeholder="Pesquisar Filme 2"
+                value={pesquisa2}
+                onChange={handlePesquisa2}
+              />
+              <div className="botoesModal">
+                <button className="excluirFilme" onClick={excluirFilme2}>
+                  Excluir Filme
+                </button>
+                <button
+                  className="confirmaMovie"
+                  onClick={() =>
+                    definirFundoEFechar(
+                      filmeSelecionado2
+                        ? `${imageUrl}${filmeSelecionado2.backdrop_path}`
+                        : "",
+                      setImagemFundo2,
+                      setModalState2
+                    )
+                  }
+                >
+                  Enviar
+                </button>
+              </div>
+            </>
           )}
-
           {!filmeSelecionado2 && resultados2.length > 0 && (
             <section className="resultadosModal">
               {resultados2.map((filme) => (
@@ -297,6 +299,7 @@ const Ferramenta = () => {
           )}
         </div>
       </div>
+
 
       <p
         className="buscarSemelhante"

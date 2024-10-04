@@ -1,3 +1,7 @@
+html{
+  overflow-x: hidden;
+}
+
 #Header {
   display: flex;
   flex-direction: column;
@@ -545,7 +549,7 @@ a {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  margin: 10% auto;
+  margin: auto;
   overflow: hidden;
   height: 80%;
 }
@@ -643,11 +647,10 @@ a {
 }
 
 #credito {
-  left: calc(50% - 15%);
+  text-align: center;
   bottom: 0;
   position: absolute;
-  margin: 10% 0 0 0;
-  width: 30%;
+  width: 100%;
 }
 
 #credito a {
@@ -921,8 +924,6 @@ a {
 
   #credito {
     font-size: 1rem;
-    left: calc(50% - 23%);
-    width: 46%;
   }
 }
 
@@ -1183,7 +1184,5 @@ a {
 
   #credito {
     font-size: .7rem;
-    left: calc(50% - 40%);
-    width: 80%;
   }
 }

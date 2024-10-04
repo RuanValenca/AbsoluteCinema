@@ -53,13 +53,13 @@ const Filmes = () => {
   const abrirMenu = () => {
     const menu = document.querySelector('.menu-lateral');
     menu.style.right = '0';
-    document.body.style.overflowY = "hidden";
+    document.documentElement.style.overflow = "hidden";
   };
 
   const fecharMenu = () => {
     const menu = document.querySelector('.menu-lateral');
     menu.style.right = '-410px';
-    document.body.style.overflowY = "auto";
+    document.documentElement.style.overflow = "auto";
   };
 
   const handleClickCategoria = (id, event) => {
